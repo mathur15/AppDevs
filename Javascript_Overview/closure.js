@@ -18,6 +18,9 @@ function makeArray(){
 var list=makeArray()
 //console.log(list)
 console.log(list[0]())//result is 5.
+console.log(list[1]())
+console.log(list[2]())
+console.log(list[3]())
 
 function makeArray(){
 	const arr=[]
@@ -28,11 +31,20 @@ function makeArray(){
 }
 var list=makeArray()
 //console.log(list)
-console.log(list[1]())//result is i.
+console.log(list[0]())//result is i.
+console.log(list[1]())
+console.log(list[2]())
+console.log(list[3]())
 
-// in the first case we use var, whose value lasts till the end of the 
-// function...which in that case would be 5. However let only limits the 
-// value only within the for block.
+
+/*in the first case we use var, whose value lasts till the end of the 
+function...which in that case would be 5. However let only limits the 
+value only within the for block.
+
+Var defines the variable globally or locally to an entire function regardless of 
+scope. let defines the variable in block scope. let creates a variable
+declaration for each loop which is block level declaration.*/
+
 
 
 function makeHello(){
