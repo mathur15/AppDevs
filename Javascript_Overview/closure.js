@@ -61,6 +61,8 @@ sayHello() //when invoked this function still has access to the variable
 // closure.
 
 /*Using an IIFE keeps the state of the variable even when var is use */
+/*do not modify global object*/
+/*immediately invoked*/
 for(var i=1;i<5;i++){
 	(function(i){
 		setTimeout(function(){
@@ -69,3 +71,17 @@ for(var i=1;i<5;i++){
 		},100)
 	})(i)
 }
+
+const count=(function(){
+	let count =0//not available in the global scope
+
+	return {
+		inc:function(){count=count+1}
+		get:function(){console.log(count)}
+	}
+})
+
+count.get()//immediately invoked
+count.inc()
+count.get()
+
