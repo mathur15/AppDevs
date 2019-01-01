@@ -18,14 +18,15 @@ const friend={
 }
 
 friend.greet=person.greet//now this is bound to new object
+//console.log(friend.greet)-this will be undefined since this is bound to friend
 
 
-//1.Setting this explicitly using bind
+// // //1.Setting this explicitly using bind
 const greet2=person.greet.bind({name:"This is bound"})
-/*instead of global object this is now explicitly bound to name: "This is bound"
-*/
+// instead of global object this is now explicitly bound to name: "This is bound"
+
 greet2()
 
-//2.setting this using call or apply
+// //2.setting this using call or apply
 
-person.greet.call({name:"This is using apply or call"})
+// person.greet.call({name:"This is using apply or call"})
