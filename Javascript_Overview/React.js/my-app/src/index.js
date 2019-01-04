@@ -15,23 +15,32 @@ class Board extends React.Component {
     super(props)
     this.state={
       squares:Array(9).fill(null)
+      xIsNext:true,
+      //this state will determine if X or O should be played
+      //it will be flipped everytime
     }
   }
   renderSquare(i) {
     return <Square value={this.squares[i]}
                     onClick={()=> this.handleClick(i)} />;
   }
+
+  //-------IMP------
   //this is essentially passing the state fron parent to child component
   handleclick(i){//handles what each square should look
     //pass the state to the squares
     const squares=this.state.squares.slice();
     /*create a copy of the array for immutabiliity*/
-    squares[i]="X";
-    this.setState({squares:squares})
+    squares[i]=this.state.xIsNext?"X":"O";
+    //determining what to assign based the isnext value
+    this.setState({squares:squares,
+      xIsNext:!this.state.xIsNext,})//toggle the value for the next turn
   }
 
+  //-----IMP------
+
   render() {
-    const status = 'Next player: X';
+    const status = "Next player: "+ (this.state.xIsNext? "X":"O");
 
     return (
       <div>
