@@ -1,19 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-class Square extends React.Component {
-  render() {
+function Square(props) {
     return (
-      <button className="square">
-        {/* TODO */}
+      <button className="square" 
+      onClick=props.onClick()>
+        {props.value}
       </button>
     );
-  }
 }
 
 class Board extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      squares:Array(9).fill(null)
+    }
+  }
   renderSquare(i) {
-    return <Square />;
+    return <Square value={this.squares[i]}
+                    onClick={()=> this.handleClick(i)} />;
+  }
+  //this is essentially passing the state fron parent to child component
+  handleclick(i){//handles what each square should look
+    //pass the state to the squares
+    const squares=this.state.squares.slice();
+    /*create a copy of the array for immutabiliity*/
+    squares[i]="X";
+    this.setState({squares:squares})
   }
 
   render() {
